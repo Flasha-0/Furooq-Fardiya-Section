@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>علم نفس فروق فردية | Flasha 🎴</title>
+  <meta name="description" content="موقع تعليمي تفاعلي لمادة علم نفس فروق فردية" />
+  <meta name="theme-color" content="#6c63ff" />
+  <link rel="manifest" href="#" id="manifest-placeholder" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Flasha-0/flasha-design-system@main/flasha-styles.css" />
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --primary-dark: #4f46e5;
+      --secondary: #f59e0b;
+      --accent: #10b981;
+      --danger: #ef4444;
+      --bg-dark: #0a0a1a;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-card-hover: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.12);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --gradient-1: linear-gradient(135deg, #6c63ff, #a855f7);
+      --gradient-2: linear-gradient(135deg, #f59e0b, #ef4444);
+      --gradient-3: linear-gradient(135deg, #10b981, #06b6d4);
+      --gradient-4: linear-gradient(135deg, #8b5cf6, #ec4899);
+      --gradient-5: linear-gradient(135deg, #3b82f6, #6c63ff);
+      --gradient-6: linear-gradient(135deg, #f59e0b, #10b981);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      direction: rtl;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    /* ===== BACKGROUND ===== */
+    .site-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 20% 20%, rgba(108,99,255,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.1) 0%, transparent 60%),
+                  radial-gradient(ellipse at 50% 50%, rgba(16,185,129,0.05) 0%, transparent 70%),
+                  #0a0a1a;
+    }
+    .site-bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(108,99,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(108,99,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    /* ===== MAIN WRAPPER ===== */
+    #app { position: relative; z-index: 1; }
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,26,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 0 1.5rem;
+    }
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 0.8rem 0;
+    }
+    .navbar-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 1.1rem; font-weight: 800;
+      background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .navbar-logo span { font-size: 1.5rem; }
+    .nav-links {
+      display: flex; gap: 0.3rem; list-style: none;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .nav-links a {
+      display: block; padding: 0.4rem 0.75rem;
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.82rem; font-weight: 600;
+      border-radius: 8px; transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text-primary);
+      background: var(--glass);
+      border-color: var(--glass-border);
+    }
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 92vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 4rem 1.5rem;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.4);
+      border-radius: 50px; padding: 0.4rem 1.2rem;
+      font-size: 0.82rem; color: #a5b4fc; margin-bottom: 1.5rem;
+      animation: fadeInDown 0.6s ease;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.2;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.7s ease 0.1s both;
+    }
+    .hero h1 .grad {
+      background: var(--gradient-1);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-secondary); max-width: 600px;
+      line-height: 1.8; margin-bottom: 2.5rem;
+      animation: fadeInUp 0.7s ease 0.2s both;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      animation: fadeInUp 0.7s ease 0.3s both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.8rem; border-radius: 12px;
+      font-family: 'Cairo', sans-serif; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; border: none; text-decoration: none;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .btn-primary {
+      background: var(--gradient-1); color: white;
+      box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,99,255,0.5); }
+    .btn-outline {
+      background: transparent; color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+    }
+    .btn-outline:hover { background: var(--glass); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 3rem; animation: fadeInUp 0.7s ease 0.4s both;
+    }
+    .stat-card {
+      text-align: center;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 1rem 1.5rem;
+    }
+    .stat-card .num { font-size: 1.8rem; font-weight: 900; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-card .lbl { font-size: 0.8rem; color: var(--text-muted); }
+    /* ===== SECTION WRAPPER ===== */
+    .section { padding: 5rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 50px; padding: 0.3rem 1rem;
+      font-size: 0.78rem; color: #a5b4fc; margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 900; margin-bottom: 0.8rem;
+    }
+    .section-title .grad { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .section-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.8; }
+    /* ===== GLASS CARD ===== */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 1.8rem;
+      transition: all 0.3s; backdrop-filter: blur(10px);
+    }
+    .glass-card:hover { background: var(--bg-card-hover); transform: translateY(-3px); }
+    /* ===== SECTION 1: INTRO ===== */
+    .intro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .intro-card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 1.8rem;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .intro-card::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 4px; height: 100%; border-radius: 0 20px 20px 0;
+    }
+    .intro-card.c1::before { background: var(--gradient-1); }
+    .intro-card.c2::before { background: var(--gradient-2); }
+    .intro-card.c3::before { background: var(--gradient-3); }
+    .intro-card.c4::before { background: var(--gradient-4); }
+    .intro-card.c5::before { background: var(--gradient-5); }
+    .intro-card:hover { background: var(--bg-card-hover); transform: translateY(-3px); }
+    .intro-card .icon {
+      width: 50px; height: 50px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1rem;
+    }
+    .intro-card.c1 .icon { background: rgba(108,99,255,0.2); }
+    .intro-card.c2 .icon { background: rgba(245,158,11,0.2); }
+    .intro-card.c3 .icon { background: rgba(16,185,129,0.2); }
+    .intro-card.c4 .icon { background: rgba(236,72,153,0.2); }
+    .intro-card.c5 .icon { background: rgba(59,130,246,0.2); }
+    .intro-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.6rem; color: var(--text-primary); }
+    .intro-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+    .tag { background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.25); border-radius: 50px; padding: 0.2rem 0.7rem; font-size: 0.75rem; color: #a5b4fc; }
+    /* ===== TIMELINE ===== */
+    .timeline { position: relative; padding-right: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #6c63ff, #a855f7, #10b981);
+      border-radius: 2px;
+    }
+    .tl-item {
+      position: relative; margin-bottom: 1rem;
+      opacity: 0; transform: translateX(20px);
+      transition: all 0.5s ease;
+    }
+    .tl-item.visible { opacity: 1; transform: translateX(0); }
+    .tl-dot {
+      position: absolute; right: -2.6rem; top: 1.2rem;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--gradient-1); border: 3px solid var(--bg-dark);
+      cursor: pointer; transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tl-dot:hover { transform: scale(1.3); }
+    .tl-dot.active { background: var(--gradient-2); transform: scale(1.3); }
+    .tl-header {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: 14px; padding: 1rem 1.2rem;
+      cursor: pointer; transition: all 0.3s;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .tl-header:hover { background: var(--bg-card-hover); }
+    .tl-header.active { background: rgba(108,99,255,0.12); border-color: rgba(108,99,255,0.4); }
+    .tl-header-left { display: flex; align-items: center; gap: 0.8rem; }
+    .tl-num {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--gradient-1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    .tl-title { font-size: 0.95rem; font-weight: 700; }
+    .tl-arrow { color: var(--text-muted); transition: transform 0.3s; font-size: 0.8rem; }
+    .tl-header.active .tl-arrow { transform: rotate(90deg); }
+    .tl-body {
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .tl-body.open { max-height: 600px; opacity: 1; }
+    .tl-body-inner {
+      background: rgba(108,99,255,0.05);
+      border: 1px solid rgba(108,99,255,0.15);
+      border-top: none; border-radius: 0 0 14px 14px;
+      padding: 1.2rem;
+    }
+    .tl-body-inner p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.9; }
+    .tl-body-inner ul { padding-right: 1.2rem; margin-top: 0.5rem; }
+    .tl-body-inner ul li { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+    /* ===== COMPARISON TABLE ===== */
+    .compare-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .compare-tab {
+      padding: 0.5rem 1.2rem; border-radius: 10px;
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      color: var(--text-secondary); cursor: pointer;
+      font-family: 'Cairo', sans-serif; font-size: 0.85rem; font-weight: 600;
+      transition: all 0.3s;
+    }
+    .compare-tab.active {
+      background: rgba(108,99,255,0.2); border-color: rgba(108,99,255,0.5);
+      color: var(--text-primary);
+    }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th {
+      background: rgba(108,99,255,0.2); padding: 0.8rem 1rem;
+      text-align: right; font-size: 0.88rem; font-weight: 700;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .compare-table th:first-child { border-radius: 0 12px 0 0; }
+    .compare-table th:last-child { border-radius: 12px 0 0 0; }
+    .compare-table td {
+      padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--text-secondary);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top; line-height: 1.7;
+    }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .compare-table .feat { font-weight: 700; color: var(--text-primary); }
+    .badge {
+      display: inline-block; padding: 0.15rem 0.6rem;
+      border-radius: 50px; font-size: 0.72rem; font-weight: 700;
+    }
+    .badge-blue { background: rgba(108,99,255,0.2); color: #a5b4fc; }
+    .badge-amber { background: rgba(245,158,11,0.2); color: #fcd34d; }
+    .badge-green { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+    /* ===== IQ CALCULATOR ===== */
+    .iq-calc { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 20px; overflow: hidden; }
+    .iq-calc-header {
+      background: var(--gradient-1); padding: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .iq-calc-header .icon { font-size: 2rem; }
+    .iq-calc-header h3 { font-size: 1.2rem; font-weight: 800; color: white; }
+    .iq-calc-header p { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+    .iq-calc-body { padding: 1.8rem; }
+    .formula-box {
+      background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 12px; padding: 1rem; text-align: center; margin-bottom: 1.5rem;
+    }
+    .formula-box .formula { font-size: 1.1rem; font-weight: 800; color: #a5b4fc; font-family: monospace; }
+    .stages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
+    .stage-box {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
+      border-radius: 12px; padding: 0.8rem;
+    }
+    .stage-box h4 { font-size: 0.8rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .stage-box p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; }
+    .calc-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .input-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.4rem; }
+    .input-group input {
+      width: 100%; padding: 0.6rem 0.8rem; border-radius: 10px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+      color: var(--text-primary); font-family: 'Cairo', sans-serif; font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    .input-group input:focus { outline: none; border-color: rgba(108,99,255,0.5); background: rgba(108,99,255,0.05); }
+    .iq-result {
+      background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);
+      border-radius: 14px; padding: 1.2rem; text-align: center;
+      display: none;
+    }
+    .iq-result.show { display: block; animation: fadeInUp 0.4s ease; }
+    .iq-result .iq-num { font-size: 3rem; font-weight: 900; background: var(--gradient-3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .iq-result .iq-label { font-size: 0.85rem; color: var(--text-secondary); }
+    .example-btn {
+      background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 10px; padding: 0.5rem 1rem;
+      color: #fcd34d; font-family: 'Cairo', sans-serif; font-size: 0.82rem;
+      cursor: pointer; transition: all 0.3s; margin-top: 0.5rem;
+    }
+    .example-btn:hover { background: rgba(245,158,11,0.25); }
+    /* ===== QUIZ ===== */
+    .quiz-container { max-width: 800px; margin: 0 auto; }
+    .quiz-progress-bar {
+      background: rgba(255,255,255,0.05); border-radius: 50px; height: 6px; margin-bottom: 2rem; overflow: hidden;
+    }
+    .quiz-progress-fill { height: 100%; background: var(--gradient-1); border-radius: 50px; transition: width 0.5s ease; }
+    .quiz-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .quiz-counter { font-size: 0.85rem; color: var(--text-muted); }
+    .quiz-type-badge { font-size: 0.75rem; padding: 0.2rem 0.7rem; border-radius: 50px; }
+    .quiz-card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 2rem; margin-bottom: 1.5rem;
+      animation: fadeInRight 0.4s ease;
+    }
+    .quiz-question { font-size: 1.05rem; font-weight: 700; line-height: 1.8; margin-bottom: 1.5rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: 0.7rem; }
+    .quiz-option {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.9rem 1.2rem; border-radius: 12px;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
+      cursor: pointer; transition: all 0.2s; text-align: right;
+      font-family: 'Cairo', sans-serif; font-size: 0.9rem;
+    }
+    .quiz-option:hover:not(.disabled) { background: rgba(108,99,255,0.1); border-color: rgba(108,99,255,0.4); }
+    .quiz-option.selected { background: rgba(108,99,255,0.15); border-color: rgba(108,99,255,0.5); }
+    .quiz-option.correct { background: rgba(16,185,129,0.15) !important; border-color: rgba(16,185,129,0.5) !important; }
+    .quiz-option.wrong { background: rgba(239,68,68,0.15) !important; border-color: rgba(239,68,68,0.5) !important; }
+    .quiz-option.disabled { cursor: not-allowed; }
+    .opt-indicator {
+      width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700;
+    }
+    .quiz-option.correct .opt-indicator { background: rgba(16,185,129,0.3); border-color: #10b981; color: #6ee7b7; }
+    .quiz-option.wrong .opt-indicator { background: rgba(239,68,68,0.3); border-color: #ef4444; color: #fca5a5; }
+    .quiz-feedback {
+      margin-top: 1rem; padding: 0.8rem 1rem; border-radius: 10px;
+      font-size: 0.85rem; line-height: 1.7;
+      display: none;
+    }
+    .quiz-feedback.show { display: block; animation: fadeInUp 0.3s ease; }
+    .quiz-feedback.correct { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; }
+    .quiz-feedback.wrong { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .quiz-result-card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: 24px; padding: 3rem; text-align: center;
+      animation: fadeInUp 0.5s ease;
+    }
+    .quiz-result-emoji { font-size: 4rem; margin-bottom: 1rem; }
+    .quiz-result-score {
+      font-size: 4rem; font-weight: 900;
+      background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .quiz-result-label { font-size: 1.2rem; font-weight: 700; margin: 0.5rem 0; }
+    .quiz-result-desc { color: var(--text-secondary); margin-bottom: 2rem; }
+    .score-circles { display: flex; justify-content: center; gap: 1.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .score-circle {
+      text-align: center; background: rgba(255,255,255,0.03);
+      border: 1px solid var(--glass-border); border-radius: 14px; padding: 1rem 1.5rem;
+    }
+    .score-circle .num { font-size: 1.8rem; font-weight: 900; }
+    .score-circle .num.green { color: #10b981; }
+    .score-circle .num.red { color: #ef4444; }
+    .score-circle .lbl { font-size: 0.75rem; color: var(--text-muted); }
+    /* ===== SECTION BG ACCENTS ===== */
+    .section-wrapper { position: relative; }
+    .section-wrapper.alt { background: rgba(255,255,255,0.01); }
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeInRight { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:translateX(0); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { min-height: 80vh; }
+      .hero-stats { gap: 0.8rem; }
+      .section { padding: 3rem 1rem; }
+      .timeline { padding-right: 1.5rem; }
+    }
+    /* ===== FLASHA FOOTER OVERRIDE ===== */
+    #fl-footer { position: relative; z-index: 10; }
+  </style>
+</head>
+<body>
+
+<!-- Flasha Loader -->
+<div id="fl-intro" role="status" aria-label="Flasha — Loading" aria-live="polite">
+  <div class="fl-intro-grid" aria-hidden="true"></div>
+  <div class="fl-intro-orb fl-intro-orb--a" aria-hidden="true"></div>
+  <div class="fl-intro-orb fl-intro-orb--b" aria-hidden="true"></div>
+  <div class="fl-intro-orb fl-intro-orb--c" aria-hidden="true"></div>
+  <div class="fl-intro-noise" aria-hidden="true"></div>
+  <div class="fl-intro-stage" aria-hidden="true">
+    <div class="fl-intro-ring-wrap">
+      <svg class="fl-intro-ring-svg" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="fl-grad-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="var(--fl-accent-a)"/>
+            <stop offset="50%" stop-color="var(--fl-accent-b)"/>
+            <stop offset="100%" stop-color="var(--fl-accent-c)"/>
+          </linearGradient>
+        </defs>
+        <circle class="fl-ring-track" cx="70" cy="70" r="62" stroke-width="1"/>
+        <circle class="fl-ring-arc" cx="70" cy="70" r="62" stroke-width="1.5" stroke-linecap="round" stroke="url(#fl-grad-ring)"/>
+      </svg>
+      <div class="fl-intro-emblem">
+        <span class="fl-intro-emoji">🎴</span>
+      </div>
+    </div>
+    <div class="fl-intro-wordmark">FLASHA</div>
+    <p class="fl-intro-byline">علم نفس فروق فردية</p>
+    <div class="fl-intro-bar"><span class="fl-intro-bar-fill"></span></div>
+  </div>
+</div>
+
+<!-- Flasha FAB -->
+<div id="fl-fab-root">
+  <div id="fl-fab-menu" role="menu" aria-hidden="true">
+    <div class="fl-panel-head">
+      <span class="fl-panel-emoji">🎴</span>
+      <span class="fl-panel-name">Flasha Connect</span>
+    </div>
+    <ul class="fl-link-list">
+      <li id="pwa-install-item" style="display:none;">
+        <a href="#" id="fl-install-btn" class="fl-link fl-link--install" data-sound="pop">
+          <span class="fl-link-chip">📲</span>
+          <span class="fl-link-body"><span class="fl-link-name">Install App</span><span class="fl-link-handle">Work Offline</span></span>
+        </a>
+      </li>
+      <li><a href="https://youtube.com/@flasha_0?si=Am46gTJ9Hk3lyHEV" target="_blank" class="fl-link fl-link--yt"><span>▶️</span> YouTube</a></li>
+      <li><a href="https://github.com/Flasha-0" target="_blank" class="fl-link fl-link--gh"><span>💻</span> GitHub</a></li>
+      <li><a href="https://discord.com/users/1484153478421942335" target="_blank" class="fl-link fl-link--dc"><span>💬</span> Discord</a></li>
+    </ul>
+  </div>
+  <button id="fl-fab-btn">🎴</button>
+</div>
+
+<!-- App Background -->
+<div class="site-bg"></div>
+<div class="site-bg-grid"></div>
+
+<div id="app">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-logo">
+        <span>🧠</span>
+        علم نفس فروق فردية
+      </div>
+      <ul class="nav-links">
+        <li><a href="#intro" onclick="smoothNav(this)">السكشن الأول</a></li>
+        <li><a href="#timeline" onclick="smoothNav(this)">خطوات التصميم</a></li>
+        <li><a href="#ibrahim" onclick="smoothNav(this)">اختبار ابراهام</a></li>
+        <li><a href="#qudurat" onclick="smoothNav(this)">القدرات العقلية</a></li>
+        <li><a href="#stanford" onclick="smoothNav(this)">ستانفورد بينيه</a></li>
+        <li><a href="#iq-calc" onclick="smoothNav(this)">حاسبة الذكاء</a></li>
+        <li><a href="#quiz" onclick="smoothNav(this)">اختبر معلوماتك</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-badge">🎓 مادة تعليمية تفاعلية | الفرقة الأولى رياضيات</div>
+    <h1>علم نفس<br/><span class="grad">الفروق الفردية</span></h1>
+    <p>استكشف مفاهيم علم النفس الفردي بطريقة تفاعلية مبتكرة — من تعريف الاختبارات النفسية إلى حساب نسبة الذكاء</p>
+    <div class="hero-btns">
+      <a href="#intro" class="btn btn-primary" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'});return false;">🚀 ابدأ التعلم</a>
+      <a href="#quiz" class="btn btn-outline" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'});return false;">📝 اختبر نفسك</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="num">6</div><div class="lbl">سكاشن</div></div>
+      <div class="stat-card"><div class="num">12</div><div class="lbl">خطوة تصميم</div></div>
+      <div class="stat-card"><div class="num">24</div><div class="lbl">سؤال تقييم</div></div>
+      <div class="stat-card"><div class="num">3</div><div class="lbl">اختبارات نفسية</div></div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: INTRO -->
+  <div class="section-wrapper" id="intro">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-tag">📚 السكشن الأول</div>
+        <h2 class="section-title">مفهوم <span class="grad">الاختبار النفسي</span></h2>
+        <p class="section-desc">الاختبار النفسي هو عينة سلوكية مُقنَّنة تستهدف القياس الموضوعي لخاصية نفسية معينة</p>
+      </div>
+      <div class="intro-grid">
+        <div class="intro-card c1 reveal">
+          <div class="icon">📋</div>
+          <h3>تعريف الاختبار النفسي</h3>
+          <p>هو عينة سلوكية مقننة تستهدف القياس الموضوعي لخاصية نفسية معينة. ويشير مفهوم التقنين إلى عدة عناصر جوهرية.</p>
+          <div class="tag-list">
+            <span class="tag">توحيد الإجراءات</span>
+            <span class="tag">معايير الاختبار</span>
+            <span class="tag">الثبات</span>
+            <span class="tag">الصدق</span>
+          </div>
+        </div>
+        <div class="intro-card c2 reveal">
+          <div class="icon">💼</div>
+          <h3>الاختبار المهني والتعليمي</h3>
+          <p>يُقصد به اختبار الشخص الأفضل لشغل مكانة معينة. الاختبار أداة تنبؤ — كلما زادت الفجوة بين المتقدمين والوظائف، زادت دقة الاختبار وكفاءته.</p>
+        </div>
+        <div class="intro-card c3 reveal">
+          <div class="icon">🧭</div>
+          <h3>التوجيه والتصنيف</h3>
+          <p><strong>التوجيه:</strong> معرفة سمات الشخص وتوجيهه للمكانة المناسبة. <strong>التصنيف:</strong> تقسيم الأشخاص إلى مجموعات وفق خصائص معينة.</p>
+        </div>
+        <div class="intro-card c4 reveal">
+          <div class="icon">🏥</div>
+          <h3>التشخيص الأكلينكي</h3>
+          <p>هو المجال الرئيسي لإسهام الأخصائي النفسي في تناول الأمراض العقلية والنفسية.</p>
+        </div>
+        <div class="intro-card c5 reveal">
+          <div class="icon">📊</div>
+          <h3>التقويم</h3>
+          <p>معرفة أثر تدريب أو دراسة معينة على قدرة أو خاصية نفسية. التقويم إما عام لكفاءة تدريب أو خاص لفرد معين.</p>
+        </div>
+        <div class="intro-card c1 reveal">
+          <div class="icon">🔬</div>
+          <h3>اختبار الفروض العملية</h3>
+          <p>الفرض العملي فكرة قابلة للفحص وحاجة إلى الإثبات أو النفي. تُعد الاختبارات النفسية من أبرز الأدوات الموضوعية لاختبار الفروض العملية.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: TIMELINE -->
+  <div class="section-wrapper alt" id="timeline">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-tag">🗂️ السكشن الثاني</div>
+        <h2 class="section-title">خطوات تصميم <span class="grad">الاختبارات النفسية</span></h2>
+        <p class="section-desc">اضغط على كل خطوة لقراءة تفاصيلها الكاملة</p>
+      </div>
+      <div class="timeline" id="tl-root"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: IBRAHIM TEST -->
+  <div class="section-wrapper" id="ibrahim">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-tag">🎨 السكشن الثالث</div>
+        <h2 class="section-title">اختبار <span class="grad">ابراهام للتفكير الابتكاري</span></h2>
+        <p class="section-desc">اختبار متخصص في قياس الإبداع والابتكار لدى الأطفال والمراهقين</p>
+      </div>
+      <!-- Info Cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;">
+        <div class="glass-card reveal" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">👤</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">المعد الأجنبي</div>
+          <div style="font-weight:700;font-size:0.95rem;">ابراهام 1977</div>
+        </div>
+        <div class="glass-card reveal" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🇸🇦</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">التعريب والتقنين</div>
+          <div style="font-weight:700;font-size:0.95rem;">أ.د/ مجدي عبد الكريم حبيب 1990</div>
+        </div>
+        <div class="glass-card reveal" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🎯</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">الهدف</div>
+          <div style="font-weight:700;font-size:0.95rem;">الكشف عن الابتكارية</div>
+        </div>
+        <div class="glass-card reveal" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📅</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">الفئة العمرية</div>
+          <div style="font-weight:700;font-size:0.95rem;">ما قبل المدرسة → الجامعة</div>
+        </div>
+        <div class="glass-card reveal" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">⏱️</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">الزمن الكلي</div>
+          <div style="font-weight:700;font-size:0.95rem;color:#fcd34d;">40 دقيقة</div>
+        </div>
+      </div>
+      <!-- What it measures -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem;">
+        <div class="glass-card reveal" style="border-top:3px solid #6c63ff;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">💡</div>
+          <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;color:#a5b4fc;">الطلاقة الفكرية</h3>
+          <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7;">القدرة على إنتاج أكبر عدد من الكلمات حول موضوع معين.</p>
+        </div>
+        <div class="glass-card reveal" style="border-top:3px solid #f59e0b;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">⭐</div>
+          <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;color:#fcd34d;">الأصالة</h3>
+          <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7;">القدرة على إنتاج أفكار جديدة وغير مألوفة حول موضوع معين.</p>
+        </div>
+        <div class="glass-card reveal" style="border-top:3px solid #10b981;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🔄</div>
+          <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;color:#6ee7b7;">المرونة التلقائية</h3>
+          <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7;">القدرة على الانتقال من فكرة إلى أخرى بسهولة.</p>
+        </div>
+      </div>
+      <!-- Comparison Table -->
+      <div class="glass-card reveal">
+        <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;">📊 هيكل الاختبار</h3>
+        <div style="overflow-x:auto;">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>العنصر</th>
+                <th>الاختبار الأول (تسمية الأشياء)</th>
+                <th>الاختبار الثاني (استعمالات الأشياء)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="feat">الوصف</td><td>يتكون من 4 أجزاء فرعية</td><td>يتكون من 4 أجزاء</td></tr>
+              <tr><td class="feat">زمن كل جزء</td><td><span class="badge badge-blue">5 دقائق</span></td><td><span class="badge badge-blue">5 دقائق</span></td></tr>
+              <tr><td class="feat">الزمن الكلي</td><td><span class="badge badge-amber">20 دقيقة</span></td><td><span class="badge badge-amber">20 دقيقة</span></td></tr>
+              <tr><td class="feat">المطلوب</td><td>إيجاد أكبر عدد من أسماء الأشياء التي تقع ضمن هذه الفئة</td><td>إنتاج أكبر عدد من الاستعمالات غير المعتادة للأشياء المذكورة (الأهنية، أوراق الجرائد، علب الصفيح)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:12px;padding:0.8rem 1rem;margin-top:1rem;font-size:0.85rem;color:#fcd34d;">
+          ⏰ الزمن الكلي لتطبيق اختبار ابراهام بالكامل = <strong>40 دقيقة</strong>
+        </div>
+      </div>
+      <!-- Scoring -->
+      <div class="glass-card reveal" style="margin-top:1.5rem;">
+        <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:1.2rem;">✏️ طريقة التصحيح</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+          <div style="background:rgba(108,99,255,0.08);border:1px solid rgba(108,99,255,0.2);border-radius:12px;padding:1rem;">
+            <h4 style="font-size:0.85rem;font-weight:800;color:#a5b4fc;margin-bottom:0.5rem;">أ- الطلاقة الفكرية</h4>
+            <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.7;">درجة على كل إجابة صحيحة بعد حذف المكررة أو غير المنتمية.</p>
+          </div>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:1rem;">
+            <h4 style="font-size:0.85rem;font-weight:800;color:#6ee7b7;margin-bottom:0.5rem;">ب- المرونة التلقائية</h4>
+            <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.7;">درجة عند الانتقال من فئة إلى فئة أخرى.</p>
+          </div>
+          <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:12px;padding:1rem;">
+            <h4 style="font-size:0.85rem;font-weight:800;color:#fcd34d;margin-bottom:0.5rem;">ج- الأصالة (بالنسبة المئوية)</h4>
+            <ul style="padding-right:1rem;font-size:0.78rem;color:var(--text-secondary);line-height:1.9;">
+              <li>أقل من 1% → <strong style="color:#6ee7b7;">4 درجات</strong></li>
+              <li>1% إلى 2% → <strong style="color:#6ee7b7;">3 درجات</strong></li>
+              <li>5% إلى 10% → <strong style="color:#fcd34d;">درجة واحدة</strong></li>
+              <li>أكثر من 10% → <strong style="color:#fca5a5;">صفر</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:12px;padding:1rem;">
+            <h4 style="font-size:0.85rem;font-weight:800;margin-bottom:0.5rem;">الصدق</h4>
+            <ul style="padding-right:1rem;font-size:0.8rem;color:var(--text-secondary);line-height:1.8;">
+              <li>الاتساق الداخلي</li>
+              <li>الصدق التلازمي</li>
+            </ul>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:12px;padding:1rem;">
+            <h4 style="font-size:0.85rem;font-weight:800;margin-bottom:0.5rem;">الثبات</h4>
+            <ul style="padding-right:1rem;font-size:0.8rem;color:var(--text-secondary);line-height:1.8;">
+              <li>التجزئة النصفية (سبيرمان-براون)</li>
+              <li>إعادة التطبيق</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: QUDURAT -->
+  <div class="section-wrapper alt" id="qudurat">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-tag">🧩 السكشن الرابع</div>
+        <h2 class="section-title">اختبار <span class="grad">القدرات العقلية الأولية</span></h2>
+        <p class="section-desc">اختبار شامل يقيس أربعة أنواع من القدرات العقلية إضافةً إلى الذكاء العام</p>
+      </div>
+      <!-- Info row -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-bottom:2rem;">
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;">👤</div><div style="font-size:0.7rem;color:var(--text-muted);">المعد الأجنبي</div><div style="font-weight:700;font-size:0.9rem;">ثرستن</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;">🇸🇦</div><div style="font-size:0.7rem;color:var(--text-muted);">التعريب</div><div style="font-weight:700;font-size:0.9rem;">أ.د/ أحمد زكي صالح</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;">📅</div><div style="font-size:0.7rem;color:var(--text-muted);">الفئة العمرية</div><div style="font-weight:700;font-size:0.9rem;">13-17 سنة</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;">⏱️</div><div style="font-size:0.7rem;color:var(--text-muted);">زمن الاختبار</div><div style="font-weight:700;font-size:0.9rem;color:#fcd34d;">31 دقيقة</div></div>
+      </div>
+      <!-- Formula -->
+      <div class="formula-box reveal" style="margin-bottom:2rem;">
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.3rem;">معادلة الذكاء العام</div>
+        <div class="formula">ق.ع = ل½/٢ + ك + ف + ع</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;">ل=اللغة &nbsp;|&nbsp; ك=الإدراك المكاني &nbsp;|&nbsp; ف=التفكير &nbsp;|&nbsp; ع=العددية</div>
+      </div>
+      <!-- 4 sub-tests -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;">
+        <div class="glass-card reveal" style="border-right:4px solid #6c63ff;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(108,99,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📝</div>
+            <div><div style="font-size:0.95rem;font-weight:800;">أ- معاني الكلمات</div><div style="font-size:0.72rem;color:var(--text-muted);">القدرة اللغوية (ل)</div></div>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+            <span class="badge badge-blue">48 عبارة</span>
+            <span class="badge badge-amber">5 دقائق</span>
+            <span class="badge badge-green">4 بدائل</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">اختيار الكلمة التي تحمل معنى الكلمة في السؤال من بين 4 بدائل فرعية. الإجابة الصحيحة بدرجة، الخاطئة أو المتروكة بصفر.</p>
+        </div>
+        <div class="glass-card reveal" style="border-right:4px solid #f59e0b;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,158,11,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">🔷</div>
+            <div><div style="font-size:0.95rem;font-weight:800;">ب- الإدراك المكاني</div><div style="font-size:0.72rem;color:var(--text-muted);">القدرة المكانية (ك)</div></div>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+            <span class="badge badge-blue">20 عبارة</span>
+            <span class="badge badge-amber">10 دقائق</span>
+            <span class="badge badge-green">6 بدائل</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">اختيار الشكل المشابه للشكل الرئيسي واستبعاد المعكوسة. التصحيح: (الصحيحة - الخاطئة). قد يكون هناك اختيار أو اثنين مشابهان.</p>
+        </div>
+        <div class="glass-card reveal" style="border-right:4px solid #10b981;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">🔤</div>
+            <div><div style="font-size:0.95rem;font-weight:800;">ج- التفكير</div><div style="font-size:0.72rem;color:var(--text-muted);">القدرة على التفكير (ف)</div></div>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+            <span class="badge badge-blue">30 عبارة</span>
+            <span class="badge badge-amber">10 دقائق</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">سلاسل من الحروف تشبه سلاسل الأعداد. المطلوب: دراستها وتكملتها بحرف واحد. مثال: أ ب أ ب أ ..... الإجابة الصحيحة بدرجة، الخاطئة أو المتروكة بصفر.</p>
+        </div>
+        <div class="glass-card reveal" style="border-right:4px solid #8b5cf6;">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(139,92,246,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">🔢</div>
+            <div><div style="font-size:0.95rem;font-weight:800;">د- العدد</div><div style="font-size:0.72rem;color:var(--text-muted);">القدرة العددية (ع)</div></div>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+            <span class="badge badge-blue">70 مسألة</span>
+            <span class="badge badge-amber">6 دقائق</span>
+            <span class="badge badge-green">14 صف × 5</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">مسائل جمع بسيطة — مراجعتها بدون آلة حاسبة. التصحيح: (الصحيحة - الخاطئة).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: STANFORD-BINET -->
+  <div class="section-wrapper" id="stanford">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-tag">🏛️ السكشن الخامس</div>
+        <h2 class="section-title">مقياس <span class="grad">ستانفورد بينيه</span></h2>
+        <p class="section-desc">أشهر مقاييس الذكاء في العالم — يقيس نسبة الذكاء العام من عمر سنتين حتى 18 سنة</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;">
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;margin-bottom:0.4rem;">👥</div><div style="font-size:0.72rem;color:var(--text-muted);">المعد الأصلي</div><div style="font-weight:700;font-size:0.88rem;">بينيه وسيمون (1905 → 1908)</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;margin-bottom:0.4rem;">🌍</div><div style="font-size:0.72rem;color:var(--text-muted);">الترجمة الإنجليزية</div><div style="font-weight:700;font-size:0.88rem;">لويس</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;margin-bottom:0.4rem;">🇸🇦</div><div style="font-size:0.72rem;color:var(--text-muted);">التعريب</div><div style="font-weight:700;font-size:0.88rem;">إسماعيل القباني</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;margin-bottom:0.4rem;">🔬</div><div style="font-size:0.72rem;color:var(--text-muted);">تطوير النسخة العربية</div><div style="font-weight:700;font-size:0.88rem;">مليكة ومحمد عبد السلام</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;margin-bottom:0.4rem;">📚</div><div style="font-size:0.72rem;color:var(--text-muted);">عدد الاختبارات</div><div style="font-weight:700;font-size:0.88rem;">90 قديم | 129 حديث</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;margin-bottom:0.4rem;">⏱️</div><div style="font-size:0.72rem;color:var(--text-muted);">زمن الاختبار</div><div style="font-weight:700;font-size:0.88rem;color:#fcd34d;">ساعة إلى ساعة ونصف</div></div>
+        <div class="glass-card reveal" style="text-align:center;"><div style="font-size:1.5rem;margin-bottom:0.4rem;">📅</div><div style="font-size:0.72rem;color:var(--text-muted);">الفئة العمرية</div><div style="font-weight:700;font-size:0.88rem;">2 سنوات → 18 سنة</div></div>
+      </div>
+      <!-- Stages -->
+      <div class="glass-card reveal" style="margin-bottom:1.5rem;">
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem;">📊 مراحل المقياس</h3>
+        <div id="stages-container"></div>
+      </div>
+      <!-- Instructions -->
+      <div class="glass-card reveal">
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem;">📋 تعليمات الاختبار ومفاهيم أساسية</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+          <div style="background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;">
+            <div style="font-size:0.85rem;font-weight:700;color:#a5b4fc;margin-bottom:0.4rem;">🏠 المكان المناسب</div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);">بيئة هادئة ومريحة للاختبار</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;">
+            <div style="font-size:0.85rem;font-weight:700;color:#fcd34d;margin-bottom:0.4rem;">👥 حضور الآخرين</div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);">لا يُسمح بحضور آخرين أثناء الاختبار</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;">
+            <div style="font-size:0.85rem;font-weight:700;color:#6ee7b7;margin-bottom:0.4rem;">📦 مواد الاختبار</div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);">تكون معينة مسبقاً</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;">
+            <div style="font-size:0.85rem;font-weight:700;color:#f9a8d4;margin-bottom:0.4rem;">🏁 العمر القاعدي</div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);">العمر الذي يجيب فيه المفحوص على جميع الأسئلة</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;">
+            <div style="font-size:0.85rem;font-weight:700;color:#fca5a5;margin-bottom:0.4rem;">🔝 سقف الاختبار</div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);">العمر الذي يفشل فيه المفحوص في جميع الأسئلة</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:10px;padding:0.8rem;">
+            <div style="font-size:0.85rem;font-weight:700;color:#93c5fd;margin-bottom:0.4rem;">⚡ المقياس المختصر</div>
+            <div style="font-size:0.78rem;color:var(--text-secondary);">عدد أقل من الاختبارات مع زيادة قيمة كل اختبار</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: IQ CALCULATOR -->
+  <div class="section-wrapper alt" id="iq-calc">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-tag">🧮 السكشن السادس</div>
+        <h2 class="section-title">حاسبة <span class="grad">نسبة الذكاء العام</span></h2>
+        <p class="section-desc">احسب العمر العقلي ونسبة الذكاء بناءً على طريقة مقياس ستانفورد بينيه</p>
+      </div>
+      <div class="iq-calc reveal">
+        <div class="iq-calc-header">
+          <div class="icon">🧠</div>
+          <div>
+            <h3>حاسبة نسبة الذكاء — ستانفورد بينيه</h3>
+            <p>أدخل عدد الاختبارات الناجحة في كل مرحلة لحساب العمر العقلي ونسبة الذكاء</p>
+          </div>
+        </div>
+        <div class="iq-calc-body">
+          <div class="formula-box">
+            <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.3rem;">معادلة نسبة الذكاء</div>
+            <div class="formula">نسبة الذكاء = (العمر العقلي ÷ العمر الزمني) × 100</div>
+          </div>
+          <div class="stages-grid">
+            <div class="stage-box">
+              <h4>المرحلة الأولى (2-6 سنوات)</h4>
+              <p>7 فئات × 6 اختبارات<br/>كل اختبار = شهر واحد</p>
+            </div>
+            <div class="stage-box">
+              <h4>المرحلة الثانية (6-14 سنة)</h4>
+              <p>9 فئات × 6 اختبارات<br/>كل اختبار = شهران</p>
+            </div>
+            <div class="stage-box">
+              <h4>المرحلة الثالثة (14-15)</h4>
+              <p>8 اختبارات<br/>كل اختبار = شهران</p>
+            </div>
+            <div class="stage-box">
+              <h4>المرحلة الرابعة (15-16)</h4>
+              <p>6 اختبارات<br/>كل اختبار = 4 شهور</p>
+            </div>
+            <div class="stage-box">
+              <h4>المرحلة الخامسة (16-17)</h4>
+              <p>6 اختبارات<br/>كل اختبار = 5 شهور</p>
+            </div>
+            <div class="stage-box">
+              <h4>المرحلة السادسة (17-18)</h4>
+              <p>6 اختبارات<br/>كل اختبار = 6 شهور</p>
+            </div>
+          </div>
+          <h4 style="margin-bottom:1rem;font-size:0.9rem;font-weight:700;">أدخل بيانات الطفل</h4>
+          <div class="calc-inputs">
+            <div class="input-group">
+              <label>العمر الزمني (بالأشهر)</label>
+              <input type="number" id="chrono-age" placeholder="مثال: 50 شهراً" min="0" max="300" />
+            </div>
+            <div class="input-group">
+              <label>العمر القاعدي (بالأشهر)</label>
+              <input type="number" id="base-age" placeholder="مثال: 36" min="0" max="300" />
+            </div>
+          </div>
+          <h4 style="margin-bottom:0.8rem;font-size:0.88rem;font-weight:700;">الاختبارات الناجحة فوق العمر القاعدي</h4>
+          <div class="calc-inputs">
+            <div class="input-group">
+              <label>عدد الاختبارات (المرحلة الأولى)</label>
+              <input type="number" id="s1" placeholder="كل اختبار = شهر" min="0" max="42" />
+            </div>
+            <div class="input-group">
+              <label>عدد الاختبارات (المرحلة الثانية)</label>
+              <input type="number" id="s2" placeholder="كل اختبار = شهران" min="0" max="54" />
+            </div>
+            <div class="input-group">
+              <label>عدد الاختبارات (المرحلة الثالثة)</label>
+              <input type="number" id="s3" placeholder="كل اختبار = شهران" min="0" max="8" />
+            </div>
+            <div class="input-group">
+              <label>عدد الاختبارات (المرحلة الرابعة)</label>
+              <input type="number" id="s4" placeholder="كل اختبار = 4 شهور" min="0" max="6" />
+            </div>
+            <div class="input-group">
+              <label>عدد الاختبارات (المرحلة الخامسة)</label>
+              <input type="number" id="s5" placeholder="كل اختبار = 5 شهور" min="0" max="6" />
+            </div>
+            <div class="input-group">
+              <label>عدد الاختبارات (المرحلة السادسة)</label>
+              <input type="number" id="s6" placeholder="كل اختبار = 6 شهور" min="0" max="6" />
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+            <button class="btn btn-primary" onclick="calculateIQ()">🧮 احسب نسبة الذكاء</button>
+            <button class="example-btn" onclick="loadExample()">📋 جرب المثال من الكتاب</button>
+          </div>
+          <div class="iq-result" id="iq-result">
+            <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;">نسبة الذكاء</div>
+            <div class="iq-num" id="iq-num">--</div>
+            <div class="iq-label" id="iq-label">--</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;text-align:center;">
+              <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:0.8rem;">
+                <div style="font-size:1.2rem;font-weight:800;color:#a5b4fc;" id="mental-age-display">--</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">العمر العقلي</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:0.8rem;">
+                <div style="font-size:1.2rem;font-weight:800;color:#fcd34d;" id="chrono-display">--</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);">العمر الزمني</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ SECTION -->
+  <div class="section-wrapper" id="quiz">
+    <div class="section">
+      <div class="section-header reveal">
+        <div class="section-tag">📝 اختبار شامل</div>
+        <h2 class="section-title">اختبر <span class="grad">معلوماتك</span></h2>
+        <p class="section-desc">24 سؤالاً يغطي الـ 6 سكاشن بالكامل — اختيار من متعدد وصح وخطأ</p>
+      </div>
+      <div class="quiz-container">
+        <div id="quiz-start-screen" class="quiz-result-card">
+          <div class="quiz-result-emoji">🧠</div>
+          <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:0.5rem;">هل أنت مستعد؟</h2>
+          <p style="color:var(--text-secondary);margin-bottom:2rem;line-height:1.8;">24 سؤالاً يغطي مفاهيم الاختبارات النفسية، خطوات التصميم، اختبار ابراهام، القدرات العقلية الأولية، ومقياس ستانفورد بينيه.</p>
+          <button class="btn btn-primary" onclick="startQuiz()" style="font-size:1rem;padding:1rem 2.5rem;">🚀 ابدأ الاختبار</button>
+        </div>
+        <div id="quiz-main" style="display:none;">
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress"></div></div>
+          <div class="quiz-meta">
+            <span class="quiz-counter" id="quiz-counter">السؤال 1 من 24</span>
+            <span class="quiz-type-badge badge" id="quiz-type-badge"></span>
+          </div>
+          <div class="quiz-card" id="quiz-card">
+            <div class="quiz-question" id="quiz-question"></div>
+            <div class="quiz-options" id="quiz-options"></div>
+            <div class="quiz-feedback" id="quiz-feedback"></div>
+          </div>
+          <div class="quiz-nav">
+            <div id="quiz-score-live" style="font-size:0.85rem;color:var(--text-muted);"></div>
+            <button class="btn btn-primary" id="quiz-next-btn" onclick="nextQuestion()" style="display:none;">التالي ←</button>
+          </div>
+        </div>
+        <div id="quiz-result-screen" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="fl-footer">
+  <p>Crafted by <a href="https://github.com/Flasha-0" target="_blank">Flasha 🎴</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/gh/Flasha-0/flasha-design-system@main/flasha-scripts.js"></script>
+<script>
+// ===== PWA: SERVICE WORKER REGISTRATION =====
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    const swCode = `
+const CACHE_NAME = 'flasha-frooq-v1';
+const urlsToCache = [location.href];
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
+});
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => response || fetch(event.request).then(r => {
+      return caches.open(CACHE_NAME).then(cache => { cache.put(event.request, r.clone()); return r; });
+    }))
+  );
+});
+    `;
+    const blob = new Blob([swCode], { type: 'application/javascript' });
+    const swUrl = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swUrl).catch(() => {});
+  });
+}
+
+// ===== PWA: INSTALL PROMPT =====
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('pwa-install-item').style.display = 'block';
+});
+document.getElementById('fl-install-btn').addEventListener('click', (e) => {
+  e.preventDefault();
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+      document.getElementById('pwa-install-item').style.display = 'none';
+    });
+  }
+});
+
+// ===== NAV SMOOTH =====
+function smoothNav(el) {
+  const href = el.getAttribute('href');
+  const target = document.querySelector(href);
+  if (target) { setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 0); }
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+  return false;
+}
+
+// ===== REVEAL ON SCROLL =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ===== TIMELINE DATA =====
+const timelineSteps = [
+  { num: 1, title: 'تحديد الهدف العملي', body: '<p>تحديد الخدمة المطلوب من الاختبار تقديمها. عادةً ما نحرص على تسجيل هذا الهدف بوضوح منذ البداية.</p>' },
+  { num: 2, title: 'تحديد الوظائف الفعلية', body: '<p>يترتب على تحديد الوظائف التي يقيسها الاختبار حسم قضية أساسية: هل يُعد الباحث اختباراً واحداً أم بطارية من الاختبارات؟</p>' },
+  { num: 3, title: 'تحديد الإطار النظري', body: '<p>يحدد بوضوح الإطار النظري الذي سيلتزمه في تصوره أو معالجته للخاصية أو السمة التي يستهدف قياسها. الهدف أن تكون الخطوة واضحة للباحث منذ البداية.</p>' },
+  { num: 4, title: 'تحديد طبيعة الأفراد', body: '<p>يتم تحديد طبيعة الأفراد من حيث:</p><ul><li>السن</li><li>المستوى التعليمي</li><li>نواحي العجز العقلي والبدني</li></ul><p>هذه المجالات هي التي تحدد الشكل الأنسب للاختبار.</p>' },
+  { num: 5, title: 'اختيار الشكل المناسب', body: '<p>يختار الباحث الشكل الذي يراه مناسباً بناءً على خصائص الأفراد وطبيعة الخاصية المقاسة.</p>' },
+  { num: 6, title: 'مراجعة الاختبارات المتوفرة', body: '<p>يرجع الباحث إلى ما هو متوافر بالفعل من اختبارات ليرى ما إذا كانت تلك الاختبارات تتضمن اختباراً يصلح لأداء هذه المهمة.</p>' },
+  { num: 7, title: 'تحديد شكل الفقرات', body: '<p>يختار الباحث نوع فقرات الاختبار من بين:</p><ul><li>اختيار إجابة من إجابتين</li><li>اختيار إجابة واحدة من عدة إجابات</li><li>التكملة</li><li>المطابقة</li><li>الاستجابة الحرة</li><li>إعادة الترتيب</li></ul>' },
+  { num: 8, title: 'صياغة الفقرات', body: '<p>صياغة الفقرات بعدد أكبر من المطلوب. مثلاً: إذا كان الاختبار يتكون من 50 فقرة، فعلينا اختيار 100 فقرة — لأن الخطوات التالية تتطلب استبعاد عدد منها.</p>' },
+  { num: 9, title: 'تعليمات الاختبار', body: '<p><strong>أ- تعليمات الفاحصين:</strong> شرح دقيق للاختبار والخاصية وإجراءات التطبيق بالتفصيل.</p><p><strong>ب- تعليمات المفحوصين:</strong></p><ul><li>البيانات التعريفية (الاسم، السن، الجنس)</li><li>فكرة مبسطة عن الاختبار وزمنه وطريقة الإجابة</li><li>نماذج محلولة</li><li>أسئلة تدريبية</li><li>تعليمات بدء الاختبار</li></ul>' },
+  { num: 10, title: 'عينة التقنين الأولى', body: '<p>الهدف منها:</p><ul><li>التأكد من صلاحية صياغة التعليمات للمفحوصين</li><li>التوصل إلى تقدير تقريبي للزمن الذي يستغرقه الاختبار</li><li>الاستقرار على ترتيب الفقرات وفق سهولتها أو صعوبتها (من الأسهل=قاعدة الاختبار → الأصعب=سقف الاختبار)</li></ul>' },
+  { num: 11, title: 'عينة التقنين الثانية', body: '<p>الهدف: التيقن من أن التعديلات التي أُدخلت على الاختبارات قد جعلتها أنسب لمستوى المفحوصين.</p><p>يكون عدد أفراد هذه العينة على التقريب <strong>أربعة أمثال عينة التقنين الأولى</strong>.</p>' },
+  { num: 12, title: 'تجربة التقنين الأساسية', body: '<p>تستهدف ثلاثة أهداف رئيسية:</p><ul><li>استخلاص المعايير</li><li>حساب الصدق</li><li>حساب الثبات</li></ul><p>⚠️ <strong>الاختبار لا يُعد مكتملاً إلا إذا توافرت له في النهاية: المعايير والثبات والصدق.</strong></p>' },
+];
+
+function buildTimeline() {
+  const root = document.getElementById('tl-root');
+  root.innerHTML = timelineSteps.map((step, i) => `
+    <div class="tl-item" id="tl-item-${i}">
+      <div class="tl-dot" id="tl-dot-${i}" onclick="toggleTimeline(${i})"></div>
+      <div class="tl-header" id="tl-header-${i}" onclick="toggleTimeline(${i})">
+        <div class="tl-header-left">
+          <div class="tl-num">${step.num}</div>
+          <div class="tl-title">${step.title}</div>
+        </div>
+        <span class="tl-arrow">◄</span>
+      </div>
+      <div class="tl-body" id="tl-body-${i}">
+        <div class="tl-body-inner">${step.body}</div>
+      </div>
+    </div>
+  `).join('');
+  // Observe
+  document.querySelectorAll('.tl-item').forEach((el, i) => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 60); } });
+    }, { threshold: 0.05 });
+    obs.observe(el);
+  });
+}
+function toggleTimeline(i) {
+  const header = document.getElementById(`tl-header-${i}`);
+  const body = document.getElementById(`tl-body-${i}`);
+  const dot = document.getElementById(`tl-dot-${i}`);
+  const isOpen = body.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.tl-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.tl-header').forEach(h => h.classList.remove('active'));
+  document.querySelectorAll('.tl-dot').forEach(d => d.classList.remove('active'));
+  if (!isOpen) {
+    body.classList.add('open');
+    header.classList.add('active');
+    dot.classList.add('active');
+  }
+}
+buildTimeline();
+
+// ===== STAGES DATA =====
+const stages = [
+  { label: 'المرحلة الأولى', range: '2 - 6 سنوات', cats: 7, tests: 6, val: 1, note: 'كل اختبار = شهر واحد', color: '#6c63ff', total: 42 },
+  { label: 'المرحلة الثانية', range: '6 - 14 سنة', cats: 9, tests: 6, val: 2, note: 'كل اختبار = شهران', color: '#f59e0b', total: 54 },
+  { label: 'المرحلة الثالثة', range: '14 - 15 (راشد متوسط)', cats: 1, tests: 8, val: 2, note: 'كل اختبار = شهران', color: '#10b981', total: 8 },
+  { label: 'المرحلة الرابعة', range: '15 - 16 (راشد متفوق1)', cats: 1, tests: 6, val: 4, note: 'كل اختبار = 4 شهور', color: '#a855f7', total: 6 },
+  { label: 'المرحلة الخامسة', range: '16 - 17 (راشد متفوق2)', cats: 1, tests: 6, val: 5, note: 'كل اختبار = 5 شهور', color: '#ec4899', total: 6 },
+  { label: 'المرحلة السادسة', range: '17 - 18 (راشد متفوق3)', cats: 1, tests: 6, val: 6, note: 'كل اختبار = 6 شهور', color: '#06b6d4', total: 6 },
+];
+function buildStages() {
+  const container = document.getElementById('stages-container');
+  if (!container) return;
+  container.innerHTML = stages.map(s => `
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem;padding:0.8rem;background:rgba(255,255,255,0.02);border-radius:10px;border-right:3px solid ${s.color};">
+      <div style="flex:1;">
+        <div style="font-size:0.88rem;font-weight:700;color:${s.color};">${s.label}</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);">${s.range}</div>
+      </div>
+      <div style="text-align:center;min-width:80px;">
+        <div style="font-size:0.7rem;color:var(--text-muted);">الاختبارات</div>
+        <div style="font-weight:800;font-size:1rem;">${s.total}</div>
+      </div>
+      <div style="text-align:center;min-width:100px;">
+        <div style="font-size:0.7rem;color:var(--text-muted);">${s.note}</div>
+      </div>
+    </div>
+  `).join('');
+}
+buildStages();
+
+// ===== IQ CALCULATOR =====
+function calculateIQ() {
+  const chrono = parseFloat(document.getElementById('chrono-age').value);
+  const base = parseFloat(document.getElementById('base-age').value) || 0;
+  const s1 = parseFloat(document.getElementById('s1').value) || 0;
+  const s2 = parseFloat(document.getElementById('s2').value) || 0;
+  const s3 = parseFloat(document.getElementById('s3').value) || 0;
+  const s4 = parseFloat(document.getElementById('s4').value) || 0;
+  const s5 = parseFloat(document.getElementById('s5').value) || 0;
+  const s6 = parseFloat(document.getElementById('s6').value) || 0;
+  if (!chrono || chrono <= 0) { alert('الرجاء إدخال العمر الزمني بالأشهر'); return; }
+  const additionalMonths = s1 * 1 + s2 * 2 + s3 * 2 + s4 * 4 + s5 * 5 + s6 * 6;
+  const mentalAge = base + additionalMonths;
+  const iq = Math.round((mentalAge / chrono) * 100);
+  const result = document.getElementById('iq-result');
+  result.classList.add('show');
+  document.getElementById('iq-num').textContent = iq;
+  document.getElementById('mental-age-display').textContent = formatMonths(mentalAge);
+  document.getElementById('chrono-display').textContent = formatMonths(chrono);
+  let label = '';
+  if (iq >= 140) label = '🌟 عبقري';
+  else if (iq >= 130) label = '✨ موهوب جداً';
+  else if (iq >= 120) label = '🎯 فوق المتوسط';
+  else if (iq >= 90) label = '✅ ذكاء متوسط';
+  else if (iq >= 70) label = '⚡ دون المتوسط';
+  else label = '⚠️ يحتاج متابعة';
+  document.getElementById('iq-label').textContent = label;
+  result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function formatMonths(m) {
+  const years = Math.floor(m / 12);
+  const months = Math.round(m % 12);
+  if (years === 0) return `${months} شهراً`;
+  if (months === 0) return `${years} سنة`;
+  return `${years} سنة و ${months} شهر`;
+}
+function loadExample() {
+  // Example from book: 4 years 2 months (50 months), base 3 years (36 months)
+  // Passed: sn 3.6 = 5 tests (shahr each), sn 4 = 3 tests (shahr each), sn 4.6 = 2 tests (shahr each), sn 5 = 2 tests (shahr each), sn 6 = 1 test (shahr each)
+  // All in stage 1 (each test = 1 month)
+  document.getElementById('chrono-age').value = 50; // 4 years 2 months
+  document.getElementById('base-age').value = 36;   // 3 years
+  document.getElementById('s1').value = 13; // 5+3+2+2+1 = 13 months from stage 1
+  document.getElementById('s2').value = 0;
+  document.getElementById('s3').value = 0;
+  document.getElementById('s4').value = 0;
+  document.getElementById('s5').value = 0;
+  document.getElementById('s6').value = 0;
+  calculateIQ();
+}
+
+// ===== QUIZ DATA =====
+const quizData = [
+  // Section 1
+  { section: 1, type: 'mcq', q: 'ما التعريف الصحيح للاختبار النفسي؟', opts: ['مجموعة من الأسئلة الشفهية لقياس الذكاء', 'عينة سلوكية مقننة تستهدف القياس الموضوعي لخاصية نفسية معينة', 'أداة لتقييم الأداء الأكاديمي فقط', 'نموذج يُملأ ذاتياً لقياس الشخصية'], correct: 1, explain: 'الاختبار النفسي هو عينة سلوكية مُقنَّنة تستهدف القياس الموضوعي لخاصية نفسية معينة.' },
+  { section: 1, type: 'mcq', q: 'يشير مفهوم التقنين إلى توحيد إجراءات الاختبار، ويُعرف ذلك بـ:', opts: ['معايير الاختبار', 'كراسة التعليمات', 'الثبات', 'الصدق'], correct: 1, explain: 'توحيد إجراءات الاختبار يُعرف بكراسة التعليمات.' },
+  { section: 1, type: 'tf', q: 'كلما زادت الفجوة بين أعداد المتقدمين وعدد الوظائف، كلما زادت دقة وكفاءة الاختبار.', opts: ['صح', 'خطأ'], correct: 0, explain: 'صحيح — كلما زادت الفجوة بين المتقدمين والوظائف، ازدادت دقة الاختبار وكفاءته.' },
+  { section: 1, type: 'mcq', q: 'ما المجال الرئيسي لإسهام الأخصائي النفسي في تناول الأمراض العقلية والنفسية؟', opts: ['الاختبار المهني', 'التصنيف', 'التشخيص الأكلينكي', 'التقويم'], correct: 2, explain: 'التشخيص الأكلينكي هو المجال الرئيسي لإسهام الأخصائي النفسي.' },
+  // Section 2
+  { section: 2, type: 'mcq', q: 'في خطوة تحديد شكل الفقرات، كم نوعاً من أنواع الفقرات تم ذكرها؟', opts: ['3 أنواع', '4 أنواع', '6 أنواع', '8 أنواع'], correct: 2, explain: 'ذُكرت 6 أنواع: اختيار من اثنتين، اختيار من متعدد، التكملة، المطابقة، الاستجابة الحرة، إعادة الترتيب.' },
+  { section: 2, type: 'tf', q: 'إذا كان الاختبار يتكون من 50 فقرة، فيكفي صياغة 50 فقرة فقط.', opts: ['صح', 'خطأ'], correct: 1, explain: 'خطأ — يجب اختيار ضعف الفقرات (100 فقرة) لأن الخطوات التالية تتطلب استبعاد بعضها.' },
+  { section: 2, type: 'mcq', q: 'ما الهدف من عينة التقنين الأولى؟', opts: ['حساب الصدق والثبات', 'استخلاص المعايير', 'التأكد من صلاحية التعليمات وتقدير الزمن وترتيب الفقرات', 'تحديد شكل الفقرات'], correct: 2, explain: 'عينة التقنين الأولى: التأكد من صلاحية التعليمات + تقدير الزمن + ترتيب الفقرات من الأسهل للأصعب.' },
+  { section: 2, type: 'mcq', q: 'ما هي الأهداف الثلاثة لتجربة التقنين الأساسية (الخطوة 12)؟', opts: ['الصدق والثبات والمعايير', 'الثبات والمعايير والصياغة', 'التعليمات والصدق والمعايير', 'الصدق والثبات والتطبيق'], correct: 0, explain: 'تجربة التقنين الأساسية تستهدف: استخلاص المعايير + حساب الصدق + حساب الثبات.' },
+  { section: 2, type: 'tf', q: 'عدد أفراد عينة التقنين الثانية يساوي ضعف أفراد عينة التقنين الأولى.', opts: ['صح', 'خطأ'], correct: 1, explain: 'خطأ — عدد أفراد عينة التقنين الثانية يساوي أربعة أمثال عينة التقنين الأولى.' },
+  // Section 3
+  { section: 3, type: 'mcq', q: 'من المعرِّب والمُقنِّن العربي لاختبار ابراهام للتفكير الابتكاري؟', opts: ['أ.د/ أحمد زكي صالح', 'أ.د/ مجدي عبد الكريم حبيب', 'لويس كامل مليكة', 'إسماعيل القباني'], correct: 1, explain: 'تعريب وتقنين اختبار ابراهام قام به أ.د/ مجدي عبد الكريم حبيب سنة 1990.' },
+  { section: 3, type: 'mcq', q: 'الزمن الكلي لتطبيق اختبار ابراهام بالكامل هو:', opts: ['20 دقيقة', '30 دقيقة', '40 دقيقة', '60 دقيقة'], correct: 2, explain: 'الزمن الكلي لتطبيق اختبار ابراهام = 40 دقيقة (20 للاختبار الأول + 20 للثاني).' },
+  { section: 3, type: 'mcq', q: 'في تصحيح الأصالة، الاستجابة التي تتكرر أقل من 1% تُعطى:', opts: ['درجة واحدة', 'درجتان', 'ثلاث درجات', 'أربع درجات'], correct: 3, explain: 'الاستجابة التي تتكرر أقل من 1% تُعطى المفحوص 4 درجات (أعلى درجات الأصالة).' },
+  { section: 3, type: 'tf', q: 'اختبار ابراهام يُعد من الاختبارات الجمعية فيما بعد 6 سنوات.', opts: ['صح', 'خطأ'], correct: 0, explain: 'صحيح — اختبار ابراهام من الاختبارات الجمعية فيما بعد 6 سنوات.' },
+  { section: 3, type: 'mcq', q: 'المرونة التلقائية في اختبار ابراهام هي:', opts: ['القدرة على إنتاج أكبر عدد من الكلمات', 'القدرة على الانتقال من فكرة إلى أخرى بسهولة', 'القدرة على إنتاج أفكار جديدة وغير مألوفة', 'القدرة على التفكير المنطقي'], correct: 1, explain: 'المرونة التلقائية هي القدرة على الانتقال من فكرة إلى فكرة أخرى بسهولة.' },
+  // Section 4
+  { section: 4, type: 'mcq', q: 'من المعرِّب والمُقنِّن العربي لاختبار القدرات العقلية الأولية؟', opts: ['أ.د/ مجدي عبد الكريم حبيب', 'إسماعيل القباني', 'أ.د/ أحمد زكي صالح', 'لويس كامل مليكة'], correct: 2, explain: 'المعرِّب والمُقنِّن لاختبار القدرات العقلية الأولية هو أ.د/ أحمد زكي صالح.' },
+  { section: 4, type: 'mcq', q: 'معادلة الذكاء العام (ق.ع) في اختبار القدرات العقلية الأولية هي:', opts: ['ل + ك + ف + ع', 'ل÷2 + ك + ف + ع', 'ل/½2 + ك + ف + ع', '(ل + ك + ف + ع) ÷ 4'], correct: 2, explain: 'معادلة الذكاء العام: ق.ع = ل½/٢ + ك + ف + ع' },
+  { section: 4, type: 'tf', q: 'في اختبار التفكير، الاستجابة الخاطئة تُعطى درجة سالبة.', opts: ['صح', 'خطأ'], correct: 1, explain: 'خطأ — الاستجابة الخاطئة أو المتروكة تُعطى صفراً، ولا توجد درجة سالبة في اختبار التفكير.' },
+  { section: 4, type: 'mcq', q: 'عدد مسائل اختبار العدد وزمن تطبيقه:', opts: ['50 مسألة في 5 دقائق', '60 مسألة في 6 دقائق', '70 مسألة في 6 دقائق', '80 مسألة في 8 دقائق'], correct: 2, explain: 'اختبار العدد: 70 مسألة في 6 دقائق، مقسمة على 14 صف × 5 مسائل.' },
+  { section: 4, type: 'mcq', q: 'الفئة العمرية التي يُطبَّق عليها اختبار القدرات العقلية الأولية:', opts: ['6-12 سنة', '10-15 سنة', '13-17 سنة', '15-20 سنة'], correct: 2, explain: 'يُطبَّق اختبار القدرات العقلية الأولية على الفئة العمرية من 13-17 سنة.' },
+  // Section 5 & 6
+  { section: 5, type: 'mcq', q: 'من الذي نقل مقياس ستانفورد بينيه إلى اللغة العربية أولاً؟', opts: ['لويس كامل مليكة', 'محمد عبد السلام', 'إسماعيل القباني', 'أحمد زكي صالح'], correct: 2, explain: 'تمت ترجمته للعربية بواسطة إسماعيل القباني ثم نقله إلى الدول العربية.' },
+  { section: 5, type: 'tf', q: 'العمر القاعدي في مقياس ستانفورد بينيه هو العمر الذي يفشل فيه المفحوص في الإجابة على جميع الأسئلة.', opts: ['صح', 'خطأ'], correct: 1, explain: 'خطأ — العمر القاعدي هو العمر الذي يجيب فيه المفحوص على جميع الأسئلة بنجاح. أما الفشل في الجميع فهو "سقف الاختبار".' },
+  { section: 6, type: 'mcq', q: 'في المرحلة الأولى من مقياس ستانفورد بينيه (2-6 سنوات)، قيمة كل اختبار:', opts: ['شهر واحد', 'شهران', '3 أشهر', '4 أشهر'], correct: 0, explain: 'في المرحلة الأولى (2-6 سنوات): 7 فئات × 6 اختبارات، وكل اختبار تقديره شهر واحد.' },
+  { section: 6, type: 'mcq', q: 'إذا كان العمر العقلي لطفل 54 شهراً وعمره الزمني 50 شهراً، فنسبة ذكائه هي:', opts: ['100', '108', '93', '120'], correct: 1, explain: 'نسبة الذكاء = (54 ÷ 50) × 100 = 108' },
+  { section: 6, type: 'tf', q: 'في المرحلة الرابعة من مقياس ستانفورد بينيه (15-16 سنة)، كل اختبار تقديره شهران.', opts: ['صح', 'خطأ'], correct: 1, explain: 'خطأ — في المرحلة الرابعة (15-16 سنة)، كل اختبار تقديره 4 شهور وليس شهرين.' },
+];
+
+// ===== QUIZ LOGIC =====
+let currentQ = 0, score = 0, answered = false;
+function startQuiz() {
+  currentQ = 0; score = 0;
+  document.getElementById('quiz-start-screen').style.display = 'none';
+  document.getElementById('quiz-main').style.display = 'block';
+  renderQuestion();
+}
+function renderQuestion() {
+  answered = false;
+  const q = quizData[currentQ];
+  const total = quizData.length;
+  document.getElementById('quiz-progress').style.width = ((currentQ / total) * 100) + '%';
+  document.getElementById('quiz-counter').textContent = `السؤال ${currentQ + 1} من ${total}`;
+  const typeBadge = document.getElementById('quiz-type-badge');
+  typeBadge.textContent = q.type === 'mcq' ? 'اختيار من متعدد' : 'صح أم خطأ';
+  typeBadge.className = 'quiz-type-badge badge ' + (q.type === 'mcq' ? 'badge-blue' : 'badge-amber');
+  document.getElementById('quiz-question').textContent = q.q;
+  const secColors = ['','#6c63ff','#f59e0b','#10b981','#a855f7','#ec4899','#06b6d4'];
+  document.getElementById('quiz-card').style.borderTop = `3px solid ${secColors[q.section]}`;
+  const optContainer = document.getElementById('quiz-options');
+  const labels = ['أ', 'ب', 'ج', 'د'];
+  optContainer.innerHTML = q.opts.map((opt, i) => `
+    <div class="quiz-option" id="opt-${i}" onclick="selectAnswer(${i})">
+      <div class="opt-indicator">${q.type === 'tf' ? (i === 0 ? '✓' : '✗') : labels[i]}</div>
+      <span>${opt}</span>
+    </div>
+  `).join('');
+  document.getElementById('quiz-feedback').className = 'quiz-feedback';
+  document.getElementById('quiz-feedback').textContent = '';
+  document.getElementById('quiz-next-btn').style.display = 'none';
+  document.getElementById('quiz-score-live').textContent = `النتيجة: ${score}/${currentQ}`;
+}
+function selectAnswer(i) {
+  if (answered) return;
+  answered = true;
+  const q = quizData[currentQ];
+  const opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(o => o.classList.add('disabled'));
+  opts[i].classList.add('selected');
+  const fb = document.getElementById('quiz-feedback');
+  if (i === q.correct) {
+    score++;
+    opts[i].classList.add('correct');
+    fb.className = 'quiz-feedback correct show';
+    fb.textContent = '✅ إجابة صحيحة! ' + q.explain;
+  } else {
+    opts[i].classList.add('wrong');
+    opts[q.correct].classList.add('correct');
+    fb.className = 'quiz-feedback wrong show';
+    fb.textContent = '❌ إجابة خاطئة. ' + q.explain;
+  }
+  document.getElementById('quiz-next-btn').style.display = 'inline-flex';
+  document.getElementById('quiz-score-live').textContent = `النتيجة: ${score}/${currentQ + 1}`;
+}
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= quizData.length) { showResult(); return; }
+  document.getElementById('quiz-card').style.animation = 'none';
+  setTimeout(() => { document.getElementById('quiz-card').style.animation = 'fadeInRight 0.4s ease'; renderQuestion(); }, 50);
+}
+function showResult() {
+  document.getElementById('quiz-main').style.display = 'none';
+  const pct = Math.round((score / quizData.length) * 100);
+  let emoji = '😅', label = 'تحتاج مزيداً من المراجعة', color = '#ef4444';
+  if (pct >= 90) { emoji = '🏆'; label = 'ممتاز! أداء رائع'; color = '#10b981'; }
+  else if (pct >= 75) { emoji = '🌟'; label = 'جيد جداً! استمر'; color = '#6c63ff'; }
+  else if (pct >= 60) { emoji = '👍'; label = 'جيد، راجع المحتوى'; color = '#f59e0b'; }
+  const resultEl = document.getElementById('quiz-result-screen');
+  resultEl.style.display = 'block';
+  resultEl.innerHTML = `
+    <div class="quiz-result-card">
+      <div class="quiz-result-emoji">${emoji}</div>
+      <div class="quiz-result-score" style="color:${color};">${pct}%</div>
+      <div class="quiz-result-label">${label}</div>
+      <div class="quiz-result-desc">أجبت على ${score} من ${quizData.length} سؤالاً بشكل صحيح</div>
+      <div class="score-circles">
+        <div class="score-circle"><div class="num green">${score}</div><div class="lbl">صحيح</div></div>
+        <div class="score-circle"><div class="num" style="color:#a5b4fc;">${quizData.length}</div><div class="lbl">إجمالي</div></div>
+        <div class="score-circle"><div class="num red">${quizData.length - score}</div><div class="lbl">خاطئ</div></div>
+      </div>
+      <button class="btn btn-primary" onclick="retryQuiz()" style="margin-top:1rem;">🔄 أعد الاختبار</button>
+    </div>
+  `;
+}
+function retryQuiz() {
+  document.getElementById('quiz-result-screen').style.display = 'none';
+  document.getElementById('quiz-start-screen').style.display = 'block';
+}
+
+// ===== ACTIVE NAV ON SCROLL =====
+const sections = ['home','intro','timeline','ibrahim','qudurat','stanford','iq-calc','quiz'];
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY + 120;
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (scrollY >= el.offsetTop && scrollY < el.offsetTop + el.offsetHeight) {
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
