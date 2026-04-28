@@ -10,15 +10,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Flasha" />
 
-  <!-- PWA Manifest -->
   <link rel="manifest" id="pwa-manifest" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Flasha Design System -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Flasha-0/flasha-design-system@main/flasha-styles.css" />
 
   <style>
@@ -444,14 +441,14 @@
     @keyframes fadeRight{ from{opacity:0;transform:translateX(18px)}  to{opacity:1;transform:translateX(0)} }
 
     /* ============================================================
-       FLASHA FOOTER Z-FIX
+       FLASHA FOOTER Z-FIX & INTRO FIX
     ============================================================ */
     #fl-footer { position:relative; z-index:10; }
+    #fl-intro { pointer-events: none; } /* يمنع الـ Loader من عمل Block للأزرار */
   </style>
 </head>
 <body>
 
-<!-- ===================== FLASHA LOADER ===================== -->
 <div id="fl-intro" role="status" aria-label="Flasha — Loading" aria-live="polite">
   <div class="fl-intro-grid" aria-hidden="true"></div>
   <div class="fl-intro-orb fl-intro-orb--a" aria-hidden="true"></div>
@@ -479,7 +476,6 @@
   </div>
 </div>
 
-<!-- ===================== FLASHA FAB ===================== -->
 <div id="fl-fab-root">
   <div id="fl-fab-menu" role="menu" aria-hidden="true">
     <div class="fl-panel-head">
@@ -507,14 +503,11 @@
   <button id="fl-fab-btn">🎴</button>
 </div>
 
-<!-- ===================== BG ===================== -->
 <div class="bg-base"></div>
 <div class="bg-grid"></div>
 
-<!-- ===================== APP ===================== -->
 <div id="app">
 
-  <!-- NAVBAR -->
   <nav class="nav">
     <div class="nav-inner">
       <div class="nav-logo"><span>🧠</span> علم نفس فروق فردية</div>
@@ -530,14 +523,13 @@
     </div>
   </nav>
 
-  <!-- ══════════════════════ HERO ══════════════════════ -->
   <section class="hero" id="home">
     <div class="hero-badge">🎓 مادة تعليمية تفاعلية | الفرقة الأولى رياضيات (عام)</div>
     <h1>علم نفس<br/><span class="g">الفروق الفردية</span></h1>
     <p>استكشف مفاهيم الاختبارات النفسية بأسلوب تفاعلي حديث — من التعريف والتقنين حتى حساب نسبة الذكاء</p>
     <div class="hero-btns">
-      <button class="btn btn-p" onclick="scrollTo('#s1')">🚀 ابدأ التعلم</button>
-      <button class="btn btn-o" onclick="scrollTo('#quiz')">📝 اختبر نفسك</button>
+      <button class="btn btn-p" onclick="goToSection('#s1')">🚀 ابدأ التعلم</button>
+      <button class="btn btn-o" onclick="goToSection('#quiz')">📝 اختبر نفسك</button>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="n">6</div><div class="l">سكاشن</div></div>
@@ -547,7 +539,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════ S1: INTRO ══════════════════════ -->
   <div class="sec-wrap" id="s1">
     <div class="sec">
       <div class="sec-head rev">
@@ -594,7 +585,6 @@
     </div>
   </div>
 
-  <!-- ══════════════════════ S2: TIMELINE ══════════════════════ -->
   <div class="sec-wrap alt" id="s2">
     <div class="sec">
       <div class="sec-head rev">
@@ -606,7 +596,6 @@
     </div>
   </div>
 
-  <!-- ══════════════════════ S3: IBRAHIM ══════════════════════ -->
   <div class="sec-wrap" id="s3">
     <div class="sec">
       <div class="sec-head rev">
@@ -614,7 +603,6 @@
         <h2 class="sec-title">اختبار <span class="g">ابراهام للتفكير الابتكاري</span></h2>
         <p class="sec-desc">أداة متخصصة في الكشف عن درجة الابتكارية لدى الأطفال والمراهقين</p>
       </div>
-      <!-- info row -->
       <div class="info-row">
         <div class="info-box rev"><div class="e">👤</div><div class="lb">المعد الأجنبي</div><div class="vl">ابراهام 1977</div></div>
         <div class="info-box rev"><div class="e">🇸🇦</div><div class="lb">التعريب والتقنين</div><div class="vl">أ.د/ مجدي عبد الكريم حبيب 1990</div></div>
@@ -623,7 +611,6 @@
         <div class="info-box rev"><div class="e">⏱️</div><div class="lb">الزمن الكلي</div><div class="vl" style="color:#fcd34d;">40 دقيقة</div></div>
         <div class="info-box rev"><div class="e">👥</div><div class="lb">نوع الاختبار</div><div class="vl">جمعي (بعد 6 سنوات)</div></div>
       </div>
-      <!-- measures -->
       <div class="measures-grid">
         <div class="m-card rev" style="border-color:#6c63ff;">
           <h3 style="color:#a5b4fc;">💡 الطلاقة الفكرية</h3>
@@ -638,7 +625,6 @@
           <p>القدرة على الانتقال من فكرة إلى فكرة أخرى بسهولة.</p>
         </div>
       </div>
-      <!-- comparison table -->
       <div class="card rev" style="margin-bottom:1.5rem;">
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem;">📊 هيكل الاختبار</h3>
         <div class="tbl-wrap">
@@ -662,7 +648,6 @@
           ⏰ الزمن الكلي لتطبيق اختبار ابراهام = <strong>40 دقيقة</strong>
         </div>
       </div>
-      <!-- scoring -->
       <div class="card rev">
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem;">✏️ التصحيح وطرق الصدق والثبات</h3>
         <div class="score-rules">
@@ -691,7 +676,6 @@
     </div>
   </div>
 
-  <!-- ══════════════════════ S4: QUDURAT ══════════════════════ -->
   <div class="sec-wrap alt" id="s4">
     <div class="sec">
       <div class="sec-head rev">
@@ -699,7 +683,6 @@
         <h2 class="sec-title">اختبار <span class="g">القدرات العقلية الأولية</span></h2>
         <p class="sec-desc">يقيس أربعة أنواع من القدرات العقلية إضافةً إلى الذكاء العام</p>
       </div>
-      <!-- info row -->
       <div class="info-row">
         <div class="info-box rev"><div class="e">👤</div><div class="lb">المعد الأجنبي</div><div class="vl">ثرستن</div></div>
         <div class="info-box rev"><div class="e">🇸🇦</div><div class="lb">التعريب والتقنين</div><div class="vl">أ.د/ أحمد زكي صالح</div></div>
@@ -707,13 +690,11 @@
         <div class="info-box rev"><div class="e">⏱️</div><div class="lb">زمن الاختبار</div><div class="vl" style="color:#fcd34d;">31 دقيقة</div></div>
         <div class="info-box rev"><div class="e">🎯</div><div class="lb">الهدف</div><div class="vl">قياس 4 قدرات + الذكاء العام</div></div>
       </div>
-      <!-- formula -->
       <div class="formula-box rev" style="margin-bottom:2rem;">
         <div style="font-size:.78rem;color:var(--txt3);margin-bottom:.3rem;">معادلة الذكاء العام</div>
         <div class="formula">ق.ع = ل½/٢ + ك + ف + ع</div>
         <div style="font-size:.72rem;color:var(--txt3);margin-top:.3rem;">ل = اللغة &nbsp;|&nbsp; ك = الإدراك المكاني &nbsp;|&nbsp; ف = التفكير &nbsp;|&nbsp; ع = العددية</div>
       </div>
-      <!-- sub-tests table -->
       <div class="card rev">
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:1.1rem;">📋 الاختبارات الفرعية الأربعة</h3>
         <div class="tbl-wrap">
@@ -767,7 +748,6 @@
     </div>
   </div>
 
-  <!-- ══════════════════════ S5: STANFORD-BINET ══════════════════════ -->
   <div class="sec-wrap" id="s5">
     <div class="sec">
       <div class="sec-head rev">
@@ -775,7 +755,6 @@
         <h2 class="sec-title">مقياس <span class="g">ستانفورد بينيه</span></h2>
         <p class="sec-desc">أشهر مقاييس الذكاء — يقيس نسبة الذكاء العام من سنتين حتى 18 سنة</p>
       </div>
-      <!-- info -->
       <div class="info-row">
         <div class="info-box rev"><div class="e">👥</div><div class="lb">المعد الأصلي</div><div class="vl">بينيه وسيمون (1905 ← 1908)</div></div>
         <div class="info-box rev"><div class="e">🌍</div><div class="lb">الترجمة الإنجليزية</div><div class="vl">لويس</div></div>
@@ -785,9 +764,7 @@
         <div class="info-box rev"><div class="e">⏱️</div><div class="lb">زمن الاختبار</div><div class="vl" style="color:#fcd34d;">ساعة — ساعة ونصف</div></div>
         <div class="info-box rev"><div class="e">📅</div><div class="lb">الفئة العمرية</div><div class="vl">2 — 18 سنة</div></div>
       </div>
-      <!-- stages -->
       <div class="card rev" style="margin-bottom:1.5rem;" id="stages-box"></div>
-      <!-- concepts -->
       <div class="card rev">
         <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem;">📌 مفاهيم أساسية في المقياس</h3>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem;">
@@ -808,7 +785,6 @@
             <div style="font-size:.78rem;color:var(--txt2);">تُحدَّد مسبقاً، ولا يُسمح بحضور آخرين أثناء التطبيق.</div>
           </div>
         </div>
-        <!-- sample questions -->
         <div style="margin-top:1.2rem;background:rgba(108,99,255,.06);border:1px solid rgba(108,99,255,.18);border-radius:12px;padding:1rem;">
           <div style="font-size:.85rem;font-weight:800;margin-bottom:.6rem;">🔍 نماذج من أسئلة الاختبار</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem;font-size:.78rem;color:var(--txt2);">
@@ -821,7 +797,6 @@
     </div>
   </div>
 
-  <!-- ══════════════════════ S6: IQ CALC ══════════════════════ -->
   <div class="sec-wrap alt" id="s6">
     <div class="sec">
       <div class="sec-head rev">
@@ -882,7 +857,6 @@
     </div>
   </div>
 
-  <!-- ══════════════════════ QUIZ ══════════════════════ -->
   <div class="sec-wrap" id="quiz">
     <div class="sec">
       <div class="sec-head rev">
@@ -891,14 +865,12 @@
         <p class="sec-desc">24 سؤالاً متنوعاً يغطي جميع المحاور — اختيار من متعدد وصح/خطأ</p>
       </div>
       <div class="quiz-wrap">
-        <!-- Start -->
         <div id="q-start" class="res-card">
           <div class="res-emoji">🧠</div>
           <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:.5rem;">هل أنت مستعد؟</h2>
           <p style="color:var(--txt2);margin-bottom:2rem;line-height:1.9;">24 سؤالاً يغطي تعريف الاختبارات، خطوات التصميم، اختبار ابراهام، القدرات العقلية الأولية، مقياس ستانفورد بينيه، وحساب الذكاء.</p>
           <button class="btn btn-p" onclick="startQ()" style="font-size:1rem;padding:1rem 2.5rem;">🚀 ابدأ الاختبار</button>
         </div>
-        <!-- Main -->
         <div id="q-main" style="display:none;">
           <div class="q-prog-bar"><div class="q-prog-fill" id="q-fill"></div></div>
           <div class="q-meta">
@@ -915,20 +887,15 @@
             <button class="btn btn-p" id="q-next" onclick="nextQ()" style="display:none;">التالي ←</button>
           </div>
         </div>
-        <!-- Result -->
         <div id="q-result" style="display:none;"></div>
       </div>
     </div>
   </div>
 
-</div><!-- /app -->
-
-<!-- FLASHA FOOTER -->
-<footer id="fl-footer">
+</div><footer id="fl-footer">
   <p>Crafted by <a href="https://github.com/Flasha-0" target="_blank">Flasha 🎴</a></p>
 </footer>
 
-<!-- Flasha Scripts -->
 <script src="https://cdn.jsdelivr.net/gh/Flasha-0/flasha-design-system@main/flasha-scripts.js"></script>
 
 <script>
@@ -1004,7 +971,8 @@ document.getElementById('fl-install-btn').addEventListener('click', e => {
 /* ================================================================
    HELPERS
 ================================================================ */
-function scrollTo(id){ document.querySelector(id)?.scrollIntoView({behavior:'smooth'}); }
+function goToSection(id){ document.querySelector(id)?.scrollIntoView({behavior:'smooth'}); }
+
 function fmtM(m){
   const y=Math.floor(m/12), mo=Math.round(m%12);
   if(!y) return `${mo} شهراً`;
