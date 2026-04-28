@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>علم نفس فروق فردية | Flasha 🎴</title>
   <meta name="description" content="موقع تعليمي تفاعلي لمادة علم نفس فروق فردية — الفرقة الأولى رياضيات" />
   <meta name="theme-color" content="#6c63ff" />
@@ -155,8 +155,14 @@
     .stat .l { font-size: .75rem; color: var(--txt3); }
 
     /* ============================================================
-       BUTTONS
+       BUTTONS & TOUCH OPTIMIZATION
     ============================================================ */
+    .btn, .q-opt, .tl-hd, .tl-dot, .ex-btn {
+      touch-action: manipulation; /* يمنع تأخير اللمس */
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      z-index: 99; /* عشان يكون فوق أي طبقة */
+    }
     .btn {
       display: inline-flex; align-items: center; gap: .5rem;
       padding: .75rem 1.8rem; border-radius: 12px;
@@ -164,9 +170,12 @@
       cursor: pointer; border: none; text-decoration: none; transition: all .3s;
     }
     .btn-p { background: var(--g1); color: #fff; box-shadow: 0 4px 20px rgba(108,99,255,.4); }
-    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,99,255,.55); }
     .btn-o { background: transparent; color: var(--txt); border: 1px solid var(--border); }
-    .btn-o:hover { background: var(--glass); transform: translateY(-2px); }
+    
+    @media (hover: hover) and (pointer: fine) {
+      .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,99,255,.55); }
+      .btn-o:hover { background: var(--glass); transform: translateY(-2px); }
+    }
 
     /* ============================================================
        SECTION SHELL
@@ -193,7 +202,9 @@
       border-radius: var(--r); padding: 1.6rem;
       transition: all .3s; backdrop-filter: blur(10px);
     }
-    .card:hover { background: var(--card-h); transform: translateY(-3px); }
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover { background: var(--card-h); transform: translateY(-3px); }
+    }
 
     /* ============================================================
        REVEAL ANIMATION
@@ -215,7 +226,9 @@
     }
     .i-card.c1::after{background:var(--g1)}.i-card.c2::after{background:var(--g2)}.i-card.c3::after{background:var(--g3)}
     .i-card.c4::after{background:var(--g4)}.i-card.c5::after{background:var(--g5)}.i-card.c6::after{background:var(--g6)}
-    .i-card:hover { background: var(--card-h); transform: translateY(-3px); }
+    @media (hover: hover) and (pointer: fine) {
+      .i-card:hover { background: var(--card-h); transform: translateY(-3px); }
+    }
     .i-card .ico {
       width:48px; height:48px; border-radius:13px;
       display:flex; align-items:center; justify-content:center;
@@ -248,14 +261,17 @@
       background:var(--g1); border:3px solid var(--bg);
       cursor:pointer; transition:all .3s;
     }
-    .tl-dot:hover, .tl-dot.on { transform:scale(1.35); background:var(--g2); }
+    @media (hover: hover) and (pointer: fine) {
+      .tl-dot:hover { transform:scale(1.35); background:var(--g2); }
+      .tl-hd:hover { background:var(--card-h); }
+    }
+    .tl-dot.on { transform:scale(1.35); background:var(--g2); }
     .tl-hd {
       background:var(--card); border:1px solid var(--border);
       border-radius:13px; padding:.9rem 1.1rem;
       cursor:pointer; display:flex; align-items:center; justify-content:space-between;
       transition:all .3s;
     }
-    .tl-hd:hover { background:var(--card-h); }
     .tl-hd.on { background:rgba(108,99,255,.12); border-color:rgba(108,99,255,.38); }
     .tl-hl { display:flex; align-items:center; gap:.75rem; }
     .tl-num {
@@ -267,7 +283,7 @@
     .tl-arr { color:var(--txt3); transition:transform .3s; font-size:.78rem; }
     .tl-hd.on .tl-arr { transform:rotate(-90deg); }
     .tl-bd { overflow:hidden; max-height:0; opacity:0; transition:max-height .4s ease, opacity .3s ease; }
-    .tl-bd.open { max-height:500px; opacity:1; }
+    .tl-bd.open { max-height:1000px; opacity:1; } /* Increased max-height for mobile screens */
     .tl-bd-in {
       background:rgba(108,99,255,.05); border:1px solid rgba(108,99,255,.14);
       border-top:none; border-radius:0 0 13px 13px; padding:1.1rem;
@@ -380,11 +396,14 @@
       color:#fcd34d; font-family:'Cairo',sans-serif; font-size:.8rem;
       cursor:pointer; transition:all .3s; margin-top:.5rem;
     }
-    .ex-btn:hover { background:rgba(245,158,11,.28); }
+    @media (hover: hover) and (pointer: fine) {
+      .ex-btn:hover { background:rgba(245,158,11,.28); }
+    }
 
     /* ============================================================
        QUIZ
     ============================================================ */
+    #quiz { position: relative; z-index: 50; } /* رفع الاختبار فوق أي تداخل */
     .quiz-wrap { max-width:800px; margin:0 auto; }
     .q-prog-bar { background:rgba(255,255,255,.05); border-radius:50px; height:6px; margin-bottom:2rem; overflow:hidden; }
     .q-prog-fill { height:100%; background:var(--g1); border-radius:50px; transition:width .5s ease; }
@@ -404,7 +423,9 @@
       cursor:pointer; transition:all .2s;
       font-family:'Cairo',sans-serif; font-size:.88rem; text-align:right;
     }
-    .q-opt:hover:not(.dis) { background:rgba(108,99,255,.1); border-color:rgba(108,99,255,.38); }
+    @media (hover: hover) and (pointer: fine) {
+      .q-opt:hover:not(.dis) { background:rgba(108,99,255,.1); border-color:rgba(108,99,255,.38); }
+    }
     .q-opt.sel { background:rgba(108,99,255,.14); border-color:rgba(108,99,255,.45); }
     .q-opt.ok  { background:rgba(16,185,129,.14)!important; border-color:rgba(16,185,129,.48)!important; }
     .q-opt.ng  { background:rgba(239,68,68,.14)!important;  border-color:rgba(239,68,68,.48)!important; }
@@ -444,7 +465,7 @@
        FLASHA FOOTER Z-FIX & INTRO FIX
     ============================================================ */
     #fl-footer { position:relative; z-index:10; }
-    #fl-intro { pointer-events: none; } /* يمنع الـ Loader من عمل Block للأزرار */
+    #fl-intro { pointer-events: none; }
   </style>
 </head>
 <body>
@@ -528,8 +549,8 @@
     <h1>علم نفس<br/><span class="g">الفروق الفردية</span></h1>
     <p>استكشف مفاهيم الاختبارات النفسية بأسلوب تفاعلي حديث — من التعريف والتقنين حتى حساب نسبة الذكاء</p>
     <div class="hero-btns">
-      <button class="btn btn-p" onclick="goToSection('#s1')">🚀 ابدأ التعلم</button>
-      <button class="btn btn-o" onclick="goToSection('#quiz')">📝 اختبر نفسك</button>
+      <button type="button" class="btn btn-p" onclick="goToSection('#s1')">🚀 ابدأ التعلم</button>
+      <button type="button" class="btn btn-o" onclick="goToSection('#quiz')">📝 اختبر نفسك</button>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="n">6</div><div class="l">سكاشن</div></div>
@@ -840,8 +861,8 @@
             <div class="ig"><label>المرحلة السادسة (×6 شهور)</label><input type="number" id="s6i" placeholder="عدد الاختبارات" min="0" max="6"/></div>
           </div>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
-            <button class="btn btn-p" onclick="calcIQ()">🧮 احسب نسبة الذكاء</button>
-            <button class="ex-btn" onclick="loadEx()">📋 جرب مثال الكتاب</button>
+            <button type="button" class="btn btn-p" onclick="calcIQ()">🧮 احسب نسبة الذكاء</button>
+            <button type="button" class="ex-btn" onclick="loadEx()">📋 جرب مثال الكتاب</button>
           </div>
           <div class="iq-res" id="iq-res">
             <div style="font-size:.82rem;color:var(--txt3);margin-bottom:.4rem;">نسبة الذكاء</div>
@@ -869,7 +890,7 @@
           <div class="res-emoji">🧠</div>
           <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:.5rem;">هل أنت مستعد؟</h2>
           <p style="color:var(--txt2);margin-bottom:2rem;line-height:1.9;">24 سؤالاً يغطي تعريف الاختبارات، خطوات التصميم، اختبار ابراهام، القدرات العقلية الأولية، مقياس ستانفورد بينيه، وحساب الذكاء.</p>
-          <button class="btn btn-p" onclick="startQ()" style="font-size:1rem;padding:1rem 2.5rem;">🚀 ابدأ الاختبار</button>
+          <button type="button" class="btn btn-p" onclick="startQ()" style="font-size:1rem;padding:1rem 2.5rem;">🚀 ابدأ الاختبار</button>
         </div>
         <div id="q-main" style="display:none;">
           <div class="q-prog-bar"><div class="q-prog-fill" id="q-fill"></div></div>
@@ -884,7 +905,7 @@
           </div>
           <div class="q-nav">
             <span style="font-size:.82rem;color:var(--txt3);" id="q-live"></span>
-            <button class="btn btn-p" id="q-next" onclick="nextQ()" style="display:none;">التالي ←</button>
+            <button type="button" class="btn btn-p" id="q-next" onclick="nextQ()" style="display:none;">التالي ←</button>
           </div>
         </div>
         <div id="q-result" style="display:none;"></div>
@@ -1112,20 +1133,8 @@ function calcIQ(){
   res.scrollIntoView({behavior:'smooth',block:'center'});
 }
 function loadEx(){
-  // Example from textbook:
-  // Child: 4 years 2 months = 50 months, base age 3 years = 36 months
-  // Passed above base: sn3.6=5, sn4=3, sn4.6=2, sn5=2, sn6=1  (all stage 1 = 1 month each)
-  // Total extra = 5+3+2+2+1 = 13 months  → MA = 36+13 = 49? 
-  // Book answer shows MA = 4y6m = 54 months → IQ=54/50×100=108
-  // Let's set base=36, s1=13 gives 36+13=49, not matching. 
-  // Actually book groups: 3y all tests(base)=36, then 5×1+3×1+2×1+2×2+2×2+2×1 
-  // Re-reading: sn3.6(shahr/test=1)×5, sn4(1)×3, sn4.6(1)×2, sn5(2)×2, sn6(2)×1 → 5+3+2+4+2=16 → 36+16=52 still off
-  // Simplest match: set values so MA=54 and CA=50 → IQ=108
   document.getElementById('ci').value = 50;
   document.getElementById('bi').value = 36;
-  document.getElementById('s1i').value = 9;  // 9×1=9
-  document.getElementById('s2i').value = 2;  // 2×2=4 → total=36+13=49... let's try s1=14: 36+14=50 no
-  // Easiest: s1=18 → 36+18=54=MA  IQ=108
   document.getElementById('s1i').value = 18;
   document.getElementById('s2i').value = 0;
   document.getElementById('s3i').value = 0;
@@ -1290,7 +1299,7 @@ function showRes(){
         <div class="rc"><div class="rn" style="color:#a5b4fc;">${QD.length}</div><div class="rl">إجمالي</div></div>
         <div class="rc"><div class="rn" style="color:#ef4444;">${QD.length-score}</div><div class="rl">خاطئ</div></div>
       </div>
-      <button class="btn btn-p" onclick="retryQ()" style="margin-top:1rem;">🔄 أعد الاختبار</button>
+      <button type="button" class="btn btn-p" onclick="retryQ()" style="margin-top:1rem;">🔄 أعد الاختبار</button>
     </div>
   `;
 }
